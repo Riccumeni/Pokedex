@@ -29,8 +29,8 @@ class PokedexActivity : AppCompatActivity() {
         window.statusBarColor = getColor(R.color.primary)
         onBackPressedDispatcher.addCallback(this, onBackPressedCallBack)
 
-        val sharedPref = this.getSharedPreferences("version", Context.MODE_PRIVATE) // chiamo la shared pref "version"
-        val version = sharedPref.getString("version", "") // prendo la stringa della shared
+        val sharedPref = this.getSharedPreferences("version", Context.MODE_PRIVATE)
+        val version = sharedPref.getString("version", "")
 
         val ver = findViewById<TextView>(R.id.ver)
         when (version) {
@@ -83,7 +83,7 @@ class PokedexActivity : AppCompatActivity() {
         sendAPIRequest(version.toString())
     }
 
-    private fun sendAPIRequest(gen:String) {//creazione metodo con API, RICORDA I PERMESSI
+    private fun sendAPIRequest(gen:String) {
         val queque = Volley.newRequestQueue(this)
         val jsonReq = JsonObjectRequest(Request.Method.GET, gen, null,
             {response ->

@@ -46,8 +46,6 @@ class TeamActivity : AppCompatActivity() {
         val sharedPref = this.getSharedPreferences("version", Context.MODE_PRIVATE)
         val version = sharedPref.getString("version", "")
 
-        sendAPIRequest(version.toString())
-
         val r = findViewById<ImageButton>(R.id.randomButton)
         r.setOnClickListener {
             var animCounter = 0
@@ -77,13 +75,11 @@ class TeamActivity : AppCompatActivity() {
 
                 while (animCounter < viewList.size) {
                     pokeballList[animCounter].startAnimation(shakeToCenterLeftAnim)
-                    if(animCounter < viewList.size){
-                        Glide.with(this@TeamActivity).load(getRandomPokemon()).centerInside().into(viewList[animCounter])
-                        viewList[animCounter].visibility = View.VISIBLE
-                    }
                     animCounter++
                 }
                 delay(shakeToCenterRightAnim.duration)
+
+                sendAPIRequest(version.toString(), viewList)
             }
         }
 
@@ -106,7 +102,7 @@ class TeamActivity : AppCompatActivity() {
         }
     }
 
-    private fun sendAPIRequest(gen:String) {
+    private fun sendAPIRequest(gen:String, viewList: List<ImageView>) {
         val queque = Volley.newRequestQueue(this)
         val jsonReq = JsonObjectRequest(
             Request.Method.GET, gen, null,
@@ -121,7 +117,15 @@ class TeamActivity : AppCompatActivity() {
                     //pokemonEntries.add(PokemonEntry(pokemonEntry.entry_number, PokemonSpecies(pokemonEntry.pokemon_species.name,pokemonEntry.pokemon_species.url)))
                 }
 
-                val rand = Random.nextInt(1, numbers.size)
+
+
+                var i = 0;
+                while (i<6){
+                    val rand = Random.nextInt(0, numbers.size)
+                    Glide.with(this@TeamActivity).load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${numbers[rand]}.png").centerInside().into(viewList[i])
+                    viewList[i].visibility = View.VISIBLE
+                    i++
+                }
 
             },
             {}

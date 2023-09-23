@@ -1,4 +1,4 @@
-package com.itsmobile.pokedex.fragment
+package com.itsmobile.pokedex.ui.pokemondetail
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.itsmobile.pokedex.adapter.EvolutionAdapter
+import com.itsmobile.pokedex.ui.adapters.EvolutionAdapter
 import com.itsmobile.pokedex.databinding.FragmentPokemonEvolutionBinding
-import com.itsmobile.pokedex.model.evolution.EvolutionViewModel
+import com.itsmobile.pokedex.viewmodels.EvolutionViewModel
+import com.itsmobile.pokedex.viewmodels.PokemonDetailViewModel
 
 class PokemonEvolutionFragment : Fragment() {
-    private val evolutionModel : EvolutionViewModel by activityViewModels()
+    private val evolutionModel : PokemonDetailViewModel by activityViewModels()
 
     private var _binding: FragmentPokemonEvolutionBinding? = null
     private val binding get() = _binding!!

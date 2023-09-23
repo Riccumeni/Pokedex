@@ -1,4 +1,4 @@
-package com.itsmobile.pokedex.fragment
+package com.itsmobile.pokedex.ui.pokemondetail
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.itsmobile.pokedex.R
 import com.itsmobile.pokedex.TypeCalculator
-import com.itsmobile.pokedex.adapter.AbilityAdapter
-import com.itsmobile.pokedex.adapter.TypeAdapter
-import com.itsmobile.pokedex.adapter.StatAdapter
+import com.itsmobile.pokedex.ui.adapters.AbilityAdapter
+import com.itsmobile.pokedex.ui.adapters.TypeAdapter
+import com.itsmobile.pokedex.ui.adapters.StatAdapter
 import com.itsmobile.pokedex.databinding.FragmentPokemonDetailBinding
 import com.itsmobile.pokedex.model.Stat
-import com.itsmobile.pokedex.model.pokemon.PokemonViewModel
+import com.itsmobile.pokedex.viewmodels.PokemonDetailViewModel
 import com.itsmobile.pokedex.model.pokemon.StatInside
 
 class PokemonDetailFragment : Fragment() {
@@ -24,7 +24,7 @@ class PokemonDetailFragment : Fragment() {
     private var _binding: FragmentPokemonDetailBinding? = null
     private val binding get() = _binding!!
 
-    private val pokemonModel : PokemonViewModel by activityViewModels()
+    private val pokemonModel : PokemonDetailViewModel by activityViewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentPokemonDetailBinding.inflate(inflater, container, false)
@@ -33,8 +33,6 @@ class PokemonDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // url?.let { getPokemonSpecies(it) }
 
         pokemonModel.pokemon.observe(viewLifecycleOwner){ pokemon ->
             Glide.with(this).load(pokemon.sprites.front_default).into(binding.pokemonImageView)

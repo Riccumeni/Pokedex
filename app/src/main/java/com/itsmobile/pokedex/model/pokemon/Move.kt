@@ -2,14 +2,10 @@ package com.itsmobile.pokedex.model.pokemon
 
 import android.content.Context
 import android.util.Log
-import android.widget.TextView
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
-import com.itsmobile.pokedex.R
-import com.itsmobile.pokedex.fragment.PokemonDetailFragment
-import com.itsmobile.pokedex.model.machines.Machine
 import com.itsmobile.pokedex.model.machines.Machines
 
 class Move(val name: String, val url: String) {

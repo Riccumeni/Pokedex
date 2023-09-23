@@ -1,26 +1,23 @@
-package com.itsmobile.pokedex
+package com.itsmobile.pokedex.ui.team
 
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
+import com.itsmobile.pokedex.R
 import com.itsmobile.pokedex.databinding.ActivityTeamBinding
 import com.itsmobile.pokedex.model.pokemon.PokemonEntry
 import com.itsmobile.pokedex.model.pokemon.PokemonItem
-import com.itsmobile.pokedex.model.pokemon.PokemonSpecies
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.random.Random
@@ -37,8 +34,12 @@ class TeamActivity : AppCompatActivity() {
 
         val shakeLeftAnim = AnimationUtils.loadAnimation(this@TeamActivity, R.anim.shake_left)
         val shakeRightAnim = AnimationUtils.loadAnimation(this@TeamActivity, R.anim.shake_right)
-        val shakeToCenterLeftAnim = AnimationUtils.loadAnimation(this@TeamActivity, R.anim.shake_to_center_left)
-        val shakeToCenterRightAnim = AnimationUtils.loadAnimation(this@TeamActivity, R.anim.shake_to_center_right)
+        val shakeToCenterLeftAnim = AnimationUtils.loadAnimation(this@TeamActivity,
+            R.anim.shake_to_center_left
+        )
+        val shakeToCenterRightAnim = AnimationUtils.loadAnimation(this@TeamActivity,
+            R.anim.shake_to_center_right
+        )
 
         val pokeballList = listOf(binding.pokeball1, binding.pokeball2, binding.pokeball3, binding.pokeball4, binding.pokeball5, binding.pokeball6)
         val viewList = listOf(binding.pokemon1, binding.pokemon2, binding.pokemon3, binding.pokemon4, binding.pokemon5, binding.pokemon6)

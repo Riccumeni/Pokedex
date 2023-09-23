@@ -1,12 +1,12 @@
-package com.itsmobile.pokedex
+package com.itsmobile.pokedex.ui.adapters
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.itsmobile.pokedex.R
 import com.itsmobile.pokedex.model.Version
 
 class VersionAdapter (private val versions: ArrayList<Version>) : RecyclerView.Adapter<VersionAdapter.CustomViewHolder>() {

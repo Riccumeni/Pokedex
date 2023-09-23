@@ -13,18 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
-        <activity android:name=".TeamActivity"
+        <activity android:name=".ui.team.TeamActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
 
-        <activity android:name=".VersionActivity"
+        <activity android:name=".ui.version.VersionActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
 
         <activity
-            android:name=".PokemonDetailActivity"
+            android:name=".ui.pokemondetail.PokemonDetailActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>
@@ -36,13 +36,13 @@
             tools:ignore="LockedOrientationActivity" />
 
         <activity
-            android:name=".PokedexActivity"
+            android:name=".ui.pokedexlist.PokedexActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.home.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

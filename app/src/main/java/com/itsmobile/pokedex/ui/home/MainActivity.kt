@@ -1,10 +1,13 @@
-package com.itsmobile.pokedex
+package com.itsmobile.pokedex.ui.home
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.animation.AnimationUtils
+import com.itsmobile.pokedex.ui.pokedexlist.PokedexActivity
+import com.itsmobile.pokedex.R
+import com.itsmobile.pokedex.ui.team.TeamActivity
+import com.itsmobile.pokedex.ui.version.VersionActivity
 import com.itsmobile.pokedex.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         val sharedPrefs = getSharedPreferences("version", Context.MODE_PRIVATE)
         binding.versionTextview.text = sharedPrefs.getString("version_num", "I")
 
-        binding.view2.setOnClickListener {
+        binding.versionContainer.setOnClickListener {
             startActivity(Intent(this, VersionActivity::class.java))
             overridePendingTransition(R.anim.slide_in_right, R.anim.fade_out_anim)
         }

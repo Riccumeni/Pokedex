@@ -1,4 +1,4 @@
-package com.itsmobile.pokedex.model.evolution
+package com.itsmobile.pokedex.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

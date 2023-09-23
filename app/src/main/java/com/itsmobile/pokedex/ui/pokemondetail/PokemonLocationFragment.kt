@@ -1,4 +1,4 @@
-package com.itsmobile.pokedex.fragment
+package com.itsmobile.pokedex.ui.pokemondetail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.itsmobile.pokedex.adapter.LocationAdapter
+import com.itsmobile.pokedex.ui.adapters.LocationAdapter
 import com.itsmobile.pokedex.databinding.FragmentPokemonLocationBinding
-import com.itsmobile.pokedex.model.location.LocationViewModel
+import com.itsmobile.pokedex.viewmodels.LocationViewModel
+import com.itsmobile.pokedex.viewmodels.PokemonDetailViewModel
 
 class PokemonLocationFragment : Fragment() {
 
-    private val locationModel : LocationViewModel by activityViewModels()
+    private val locationModel : PokemonDetailViewModel by activityViewModels()
 
     private var _binding: FragmentPokemonLocationBinding? = null
     private val binding get() = _binding!!

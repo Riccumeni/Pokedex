@@ -1,4 +1,4 @@
-package com.itsmobile.pokedex.adapter
+package com.itsmobile.pokedex.ui.adapters
 
 import android.graphics.Color
 import android.view.LayoutInflater

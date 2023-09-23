@@ -1,16 +1,16 @@
-package com.itsmobile.pokedex
+package com.itsmobile.pokedex.ui.version
 
 import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.OnBackPressedDispatcher
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.itsmobile.pokedex.R
 import com.itsmobile.pokedex.databinding.ActivityVersionBinding
 import com.itsmobile.pokedex.model.Version
+import com.itsmobile.pokedex.ui.adapters.VersionAdapter
 
 class VersionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityVersionBinding

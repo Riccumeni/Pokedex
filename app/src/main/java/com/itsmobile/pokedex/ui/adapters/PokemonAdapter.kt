@@ -1,4 +1,4 @@
-package com.itsmobile.pokedex
+package com.itsmobile.pokedex.ui.adapters
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,9 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.itsmobile.pokedex.R
 import com.itsmobile.pokedex.model.pokemon.PokemonEntry
+import com.itsmobile.pokedex.ui.pokemondetail.PokemonDetailActivity
 
 class PokemonAdapter (private val pokemonEntries: ArrayList<PokemonEntry>) : RecyclerView.Adapter<PokemonAdapter.CustomViewHolder>() {
 

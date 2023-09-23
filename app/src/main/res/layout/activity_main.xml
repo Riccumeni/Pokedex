@@ -4,51 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".ui.home.MainActivity"
     android:background="@color/background">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:background="@color/primary"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent">
+
         <TextView
             android:id="@+id/text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="20dp"
             android:layout_weight="1"
             android:fontFamily="@font/poppins_semibold"
             android:text="Pokédex"
             android:textColor="@color/onPrimary"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/view2"
+        <View
+            android:id="@+id/versionContainer"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginEnd="22dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/version">
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/version"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/version_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/podkova_semibold"
-                android:text="II"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
+        <TextView
+            android:id="@+id/version_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/podkova_semibold"
+            android:text="III"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/versionContainer"
+            app:layout_constraintEnd_toEndOf="@id/versionContainer"
+            app:layout_constraintStart_toStartOf="@id/versionContainer"
+            app:layout_constraintTop_toTopOf="@id/versionContainer" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

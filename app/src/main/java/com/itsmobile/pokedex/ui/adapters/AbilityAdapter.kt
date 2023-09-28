@@ -30,26 +30,8 @@ class AbilityAdapter (private var abilities: ArrayList<Ability>): RecyclerView.A
                 Locale.getDefault()
             ) else it.toString()
         }
-        val queue = Volley.newRequestQueue(holder.view.context)
 
-        val jsonRequest = JsonObjectRequest(
-            Request.Method.GET,
-            ability.ability.url,
-            null,
-            { response ->
-                val ab = Gson().fromJson(response.toString(), EffectEntries::class.java)
-                for (effect in ab.effect_entries){
-                    if(effect.language.name == "en"){
-                        holder.view.findViewById<TextView>(R.id.description).text = effect.effect
-                    }
-                }
-
-            },
-            { error ->
-                Log.d("errore", error.message.toString())
-            }
-        )
-        queue.add(jsonRequest)
+        holder.view.findViewById<TextView>(R.id.description).text = ability.ability.description ?: "error getting data"
     }
 
     override fun getItemCount(): Int = abilities.size

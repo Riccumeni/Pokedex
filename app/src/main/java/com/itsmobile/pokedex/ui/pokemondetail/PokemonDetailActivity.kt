@@ -1,24 +1,11 @@
 package com.itsmobile.pokedex.ui.pokemondetail
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
-import com.android.volley.Request
-import com.android.volley.toolbox.JsonArrayRequest
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
-import com.google.gson.Gson
 import com.itsmobile.pokedex.R
 import com.itsmobile.pokedex.databinding.ActivityPokemonDetailBinding
-import com.itsmobile.pokedex.fragment.*
-import com.itsmobile.pokedex.model.evolution.Evolution
-import com.itsmobile.pokedex.viewmodels.EvolutionViewModel
-import com.itsmobile.pokedex.model.evolution.EvolvesTo
-import com.itsmobile.pokedex.viewmodels.LocationViewModel
-import com.itsmobile.pokedex.model.location.Locations
-import com.itsmobile.pokedex.model.pokemon.Pokemon
+import com.itsmobile.pokedex.ui.LoadingFragment
 import com.itsmobile.pokedex.viewmodels.PokemonDetailViewModel
 
 class PokemonDetailActivity : AppCompatActivity() {
@@ -26,8 +13,6 @@ class PokemonDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPokemonDetailBinding
 
     private val viewModel : PokemonDetailViewModel by viewModels()
-    private val locationsViewModel : LocationViewModel by viewModels()
-    private val evolutionViewModel : EvolutionViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,8 +25,6 @@ class PokemonDetailActivity : AppCompatActivity() {
             .beginTransaction()
             .add(R.id.fragmentView, LoadingFragment.newInstance())
             .commit()
-
-        // getPokemonSpecies(intent?.getStringExtra("url") ?: "not found")
 
         viewModel.getPokemonSpecies(this, intent?.getStringExtra("url") ?: "not found")
 

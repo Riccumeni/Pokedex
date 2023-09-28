@@ -2,6 +2,7 @@ package com.itsmobile.pokedex.viewmodels
 
 import android.content.Context
 import android.util.Log
+import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.android.volley.Request
@@ -9,6 +10,8 @@ import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
+import com.itsmobile.pokedex.R
+import com.itsmobile.pokedex.model.ability.EffectEntries
 import com.itsmobile.pokedex.model.evolution.Evolution
 import com.itsmobile.pokedex.model.evolution.EvolvesTo
 import com.itsmobile.pokedex.model.location.Locations
@@ -83,12 +86,39 @@ class PokemonDetailViewModel : ViewModel(){
 
                 this.pokemon.value = pokemon
                 locationUrl.value = response.getString("location_area_encounters")
+
+                getAbilityDescription(context)
             },
             { error ->
                 Log.d("errore", error.message.toString())
             }
         )
         queue.add(jsonRequest)
+    }
+
+    private fun getAbilityDescription(context: Context){
+        pokemon.value?.abilities?.forEach { ability ->
+            val queue = Volley.newRequestQueue(context)
+
+            val jsonRequest = JsonObjectRequest(
+                Request.Method.GET,
+                ability.ability.url,
+                null,
+                { response ->
+                    val ab = Gson().fromJson(response.toString(), EffectEntries::class.java)
+                    for (effect in ab.effect_entries){
+                        if(effect.language.name == "en"){
+                            ability.ability.description = effect.effect
+                        }
+                    }
+
+                },
+                { error ->
+                    Log.d("errore", error.message.toString())
+                }
+            )
+            queue.add(jsonRequest)
+        }
     }
 
     fun getEvolution(context: Context){

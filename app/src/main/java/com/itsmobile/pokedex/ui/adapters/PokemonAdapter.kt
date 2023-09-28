@@ -26,7 +26,7 @@ class PokemonAdapter (private val pokemonEntries: ArrayList<PokemonEntry>) : Rec
         val poke = pokemonEntries[position]
         holder.prog.text = poke.entry_number.toString()
         holder.name.text = poke.pokemon_species.name
-        Glide.with(holder.view.context).load(getImageFromShittyAPI(poke.pokemon_species.url)).centerCrop().into(holder.image)
+        Glide.with(holder.view.context).load(getImageFromAPI(poke.pokemon_species.url)).centerCrop().into(holder.image)
        /* val number = holder.view.findViewById<TextView>(R.id.num)
         number.text = poke.getNumberString()*/
         holder.pokeView.setOnClickListener{
@@ -36,7 +36,7 @@ class PokemonAdapter (private val pokemonEntries: ArrayList<PokemonEntry>) : Rec
         }
     }
 
-    private fun getImageFromShittyAPI(url:String) : String{
+    private fun getImageFromAPI(url:String) : String{
         val regex = Regex("""\d+(?=/?$)""")
         val matchResult = regex.find(url)
         return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${matchResult?.value}.png"

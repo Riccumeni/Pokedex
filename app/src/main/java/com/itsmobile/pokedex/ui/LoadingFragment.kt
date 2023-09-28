@@ -1,4 +1,4 @@
-package com.itsmobile.pokedex.fragment
+package com.itsmobile.pokedex.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater

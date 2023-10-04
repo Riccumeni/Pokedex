@@ -26,7 +26,6 @@ class PokedexViewModel: ViewModel() {
             Request.Method.GET, gen, null,
             {response ->
                 val poke = Gson().fromJson(response.toString(), PokemonItem::class.java)
-
                 val pokemonEntries = ArrayList<PokemonEntry>()
                 for (pokemonEntry in poke.pokemon_entries) {
                     pokemonEntries.add(PokemonEntry(pokemonEntry.entry_number, PokemonSpecies(pokemonEntry.pokemon_species.name,pokemonEntry.pokemon_species.url)))

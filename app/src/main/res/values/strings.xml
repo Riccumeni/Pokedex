@@ -17,4 +17,6 @@
     <string name="height">HEIGHT</string>
     <string name="base_experience">BASE EXPERIENCE</string>
     <string name="location">LOCATION</string>
+    <string name="title_activity_move_list">MoveListActivity</string>
+    <string name="title_activity_move_detail">MoveDetailActivity</string>
 </resources>

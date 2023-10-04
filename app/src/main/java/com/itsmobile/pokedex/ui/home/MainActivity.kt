@@ -9,6 +9,7 @@ import com.itsmobile.pokedex.R
 import com.itsmobile.pokedex.ui.team.TeamActivity
 import com.itsmobile.pokedex.ui.version.VersionActivity
 import com.itsmobile.pokedex.databinding.ActivityMainBinding
+import com.itsmobile.pokedex.ui.moveslist.MoveListActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -41,6 +42,11 @@ class MainActivity : AppCompatActivity() {
         binding.teamPokeballImageview.setOnClickListener {
             val intent = Intent(this, TeamActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.fade_out_anim)
+        }
+
+        binding.movesPage.setOnClickListener {
+            startActivity(Intent(this, MoveListActivity::class.java))
             overridePendingTransition(R.anim.slide_in_right, R.anim.fade_out_anim)
         }
     }

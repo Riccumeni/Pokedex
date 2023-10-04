@@ -5,24 +5,16 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
+import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.Request
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
-import com.google.gson.Gson
 import com.itsmobile.pokedex.ui.adapters.PokemonAdapter
 import com.itsmobile.pokedex.R
+import com.itsmobile.pokedex.common.VersionHelper
 import com.itsmobile.pokedex.ui.version.VersionActivity
 import com.itsmobile.pokedex.databinding.ActivityPokedexBinding
-import com.itsmobile.pokedex.model.pokemon.PokemonEntry
-import com.itsmobile.pokedex.model.pokemon.PokemonItem
-import com.itsmobile.pokedex.model.pokemon.PokemonSpecies
 import com.itsmobile.pokedex.viewmodels.PokedexViewModel
 
 class PokedexActivity : AppCompatActivity() {
@@ -39,7 +31,11 @@ class PokedexActivity : AppCompatActivity() {
 
         viewModel.getVersion(this)
 
-        binding.ver.text = viewModel.version.value?.let { getRomanVersionByUrl(it) }
+        binding.ver.text = viewModel.version.value?.let { VersionHelper.getRomanVersionByUrl(it) }
+
+        viewModel.version.value?.let {
+            binding.ver.text = VersionHelper.getRomanVersionByUrl(it)
+        }
 
         viewModel.getPokemonListFilteredByGen(viewModel.version.value.toString(), this)
 
@@ -63,13 +59,21 @@ class PokedexActivity : AppCompatActivity() {
         // RECYCLER VIEW
 
         viewModel.pokedexList.observe(this){
-            val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-            val pokemonAdapter = PokemonAdapter(it)
 
-            recyclerView.apply {
-                adapter = pokemonAdapter
-                layoutManager = LinearLayoutManager(this@PokedexActivity, LinearLayoutManager.VERTICAL, false)
+            if(it !== null){
+
+                val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+                val pokemonAdapter = PokemonAdapter(it)
+
+                recyclerView.visibility = View.VISIBLE
+                binding.progressCircular.visibility = View.GONE
+
+                recyclerView.apply {
+                    adapter = pokemonAdapter
+                    layoutManager = LinearLayoutManager(this@PokedexActivity, LinearLayoutManager.VERTICAL, false)
+                }
             }
+
         }
     }
 
@@ -78,7 +82,7 @@ class PokedexActivity : AppCompatActivity() {
 
         viewModel.getVersion(this)
 
-        binding.ver.text = viewModel.version.value?.let { getRomanVersionByUrl(it) }
+        binding.ver.text = viewModel.version.value?.let { VersionHelper.getRomanVersionByUrl(it) }
 
         viewModel.getPokemonListFilteredByGen(viewModel.version.value.toString(), this)
     }
@@ -88,19 +92,5 @@ class PokedexActivity : AppCompatActivity() {
             finish()
             overridePendingTransition(R.anim.fade_in_anim, R.anim.slide_out_right)
         }
-    }
-
-    private fun getRomanVersionByUrl(url: String): String{
-        var numberVersion = ""
-        when (url) {
-            "https://pokeapi.co/api/v2/pokedex/2"-> numberVersion = "I"
-            "https://pokeapi.co/api/v2/pokedex/3" -> numberVersion = "II"
-            "https://pokeapi.co/api/v2/pokedex/4" -> numberVersion = "III"
-            "https://pokeapi.co/api/v2/pokedex/5" -> numberVersion = "IV"
-            "https://pokeapi.co/api/v2/pokedex/8" -> numberVersion = "V"
-            "https://pokeapi.co/api/v2/pokedex/12" -> numberVersion = "VI"
-            "https://pokeapi.co/api/v2/pokedex/16" -> numberVersion = "VII"
-        }
-        return numberVersion
     }
 }

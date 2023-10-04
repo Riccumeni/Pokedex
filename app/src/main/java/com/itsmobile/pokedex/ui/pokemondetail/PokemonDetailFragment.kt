@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.itsmobile.pokedex.R
-import com.itsmobile.pokedex.TypeCalculator
+import com.itsmobile.pokedex.common.TypeCalculator
 import com.itsmobile.pokedex.ui.adapters.AbilityAdapter
 import com.itsmobile.pokedex.ui.adapters.TypeAdapter
 import com.itsmobile.pokedex.ui.adapters.StatAdapter

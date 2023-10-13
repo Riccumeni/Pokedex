@@ -4,15 +4,18 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.NavHostController
 import com.itsmobile.pokedex.ui.pokedexlist.PokedexActivity
 import com.itsmobile.pokedex.R
 import com.itsmobile.pokedex.ui.team.TeamActivity
 import com.itsmobile.pokedex.ui.version.VersionActivity
 import com.itsmobile.pokedex.databinding.ActivityMainBinding
-import com.itsmobile.pokedex.ui.moveslist.MoveListActivity
+import com.itsmobile.pokedex.ui.moveslist.MainMoveActivity
+import com.itsmobile.pokedex.ui.moveslist.MoveActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -46,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.movesPage.setOnClickListener {
-            startActivity(Intent(this, MoveListActivity::class.java))
+            startActivity(Intent(this, MoveActivity::class.java))
             overridePendingTransition(R.anim.slide_in_right, R.anim.fade_out_anim)
         }
     }

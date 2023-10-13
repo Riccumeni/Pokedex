@@ -11,8 +11,15 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Material3.DayNight.NoActionBar"
+        android:theme="@style/Theme.Material3.Light.NoActionBar"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.moveslist.MoveActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.moveslist.MainMoveActivity"
+            android:exported="false"
+            android:label="@string/title_activity_main_move" />
         <activity
             android:name=".ui.moveslist.MoveDetailActivity"
             android:exported="false"

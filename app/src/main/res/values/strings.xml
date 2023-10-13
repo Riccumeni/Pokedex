@@ -19,4 +19,5 @@
     <string name="location">LOCATION</string>
     <string name="title_activity_move_list">MoveListActivity</string>
     <string name="title_activity_move_detail">MoveDetailActivity</string>
+    <string name="title_activity_main_move">MainMoveActivity</string>
 </resources>

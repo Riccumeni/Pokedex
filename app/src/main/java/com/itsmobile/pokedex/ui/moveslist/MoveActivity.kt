@@ -21,6 +21,8 @@ class MoveActivity : AppCompatActivity() {
 
         val composeView = findViewById<ComposeView>(R.id.composeView)
 
+        window.statusBarColor = getColor(R.color.primary)
+
         composeView.apply {
             lateinit var navController: NavHostController
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
@@ -30,14 +32,14 @@ class MoveActivity : AppCompatActivity() {
 
                     NavHost(navController = navController, startDestination = "move_list"){
                         composable(route = "move_list"){
-                            MoveListScreen(navController)
+                            MoveListScreen(navController, this@MoveActivity)
                         }
                         composable(route = "move_detail?url={url}", arguments = listOf(navArgument("url"){
                             type = NavType.StringType
                         })){
                             val url = requireNotNull(it.arguments).getString("url")
                             if (url != null) {
-                                MoveDetailActivity(url, navController)
+                                MoveDetailActivity(url, navController, this@MoveActivity)
                             }
                         }
                     }

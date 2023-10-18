@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
+import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.itsmobile.pokedex.ui.adapters.PokemonAdapter
@@ -39,6 +41,12 @@ class PokedexActivity : AppCompatActivity() {
 
         viewModel.getPokemonListFilteredByGen(viewModel.version.value.toString(), this)
 
+
+
+        binding.searchEditText.addTextChangedListener {
+            viewModel.getPokemonListFilteredOnText(it.toString())
+        }
+
         // BUTTONS
 
         binding.backButton.setOnClickListener {
@@ -58,23 +66,34 @@ class PokedexActivity : AppCompatActivity() {
 
         // RECYCLER VIEW
 
-        viewModel.pokedexList.observe(this){
+        viewModel.response.observe(this){ response ->
+            if(response.status == 200){
+                viewModel.pokedexListFiltered.observe(this){
+                    if(it !== null){
+                        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+                        val pokemonAdapter = PokemonAdapter(it)
 
-            if(it !== null){
+                        binding.searchEditText.visibility = View.VISIBLE
+                        recyclerView.visibility = View.VISIBLE
+                        binding.progressCircular.visibility = View.GONE
+                        binding.errorSection.visibility = View.GONE
 
-                val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-                val pokemonAdapter = PokemonAdapter(it)
+                        recyclerView.apply {
+                            adapter = pokemonAdapter
+                            layoutManager = LinearLayoutManager(this@PokedexActivity, LinearLayoutManager.VERTICAL, false)
+                        }
+                    }
 
-                recyclerView.visibility = View.VISIBLE
-                binding.progressCircular.visibility = View.GONE
-
-                recyclerView.apply {
-                    adapter = pokemonAdapter
-                    layoutManager = LinearLayoutManager(this@PokedexActivity, LinearLayoutManager.VERTICAL, false)
                 }
+            }else{
+                binding.progressCircular.visibility = View.GONE
+                binding.searchEditText.visibility = View.GONE
+                binding.recyclerView.visibility = View.GONE
+                binding.errorSection.visibility = View.VISIBLE
             }
-
         }
+
+
     }
 
     override fun onResume() {

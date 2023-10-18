@@ -8,4 +8,5 @@
     android:id="@+id/composeView"
     tools:context=".ui.moveslist.MoveActivity">
 
+
 </androidx.compose.ui.platform.ComposeView>

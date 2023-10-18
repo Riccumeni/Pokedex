@@ -4,13 +4,11 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.NavHostController
 import com.itsmobile.pokedex.ui.pokedexlist.PokedexActivity
 import com.itsmobile.pokedex.R
 import com.itsmobile.pokedex.ui.team.TeamActivity
 import com.itsmobile.pokedex.ui.version.VersionActivity
 import com.itsmobile.pokedex.databinding.ActivityMainBinding
-import com.itsmobile.pokedex.ui.moveslist.MainMoveActivity
 import com.itsmobile.pokedex.ui.moveslist.MoveActivity
 
 class MainActivity : AppCompatActivity() {

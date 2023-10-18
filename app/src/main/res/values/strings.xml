@@ -20,4 +20,6 @@
     <string name="title_activity_move_list">MoveListActivity</string>
     <string name="title_activity_move_detail">MoveDetailActivity</string>
     <string name="title_activity_main_move">MainMoveActivity</string>
+    <string name="text_pok_mon_name">Text pokémon name...</string>
+    <string name="network_error">Seems that some went wrong...</string>
 </resources>

@@ -11,6 +11,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.itsmobile.pokedex.R
+import com.itsmobile.pokedex.model.Response
 import com.itsmobile.pokedex.model.ability.EffectEntries
 import com.itsmobile.pokedex.model.evolution.Evolution
 import com.itsmobile.pokedex.model.evolution.EvolvesTo
@@ -24,6 +25,7 @@ class PokemonDetailViewModel : ViewModel(){
     var evolution = MutableLiveData<ArrayList<Map<String, String>>>()
     var locationUrl = MutableLiveData<String>()
     var locations = MutableLiveData<ArrayList<LocationsItem>>()
+    var response = MutableLiveData<Response>()
 
     fun getPokemonSpecies(context: Context, url: String){
         val queue = Volley.newRequestQueue(context)
@@ -38,9 +40,12 @@ class PokemonDetailViewModel : ViewModel(){
                 getPokemonDetail(context, urlPokemon)
 
                 evolutionUrl.value = response.getJSONObject("evolution_chain").getString("url")
+
+                this.response.value = Response(status = 200, data = null)
             },
             { error ->
                 Log.d("errore", error.message.toString())
+                this.response.value = Response(status = 404, data = null)
             }
         )
         queue.add(jsonRequest)
@@ -88,9 +93,12 @@ class PokemonDetailViewModel : ViewModel(){
                 locationUrl.value = response.getString("location_area_encounters")
 
                 getAbilityDescription(context)
+
+                this.response.value = Response(status = 200, data = null)
             },
             { error ->
                 Log.d("errore", error.message.toString())
+                this.response.value = Response(status = 404, data = null)
             }
         )
         queue.add(jsonRequest)
@@ -112,9 +120,11 @@ class PokemonDetailViewModel : ViewModel(){
                         }
                     }
 
+                    this.response.value = Response(status = 200, data = null)
                 },
                 { error ->
                     Log.d("errore", error.message.toString())
+                    this.response.value = Response(status = 404, data = null)
                 }
             )
             queue.add(jsonRequest)
@@ -138,9 +148,11 @@ class PokemonDetailViewModel : ViewModel(){
                 evo = getEvolutionsRecursive(evolutions.chain.evolves_to, evo)
 
                 evolution.value = evo
+                this.response.value = Response(status = 200, data = null)
             },
             { error ->
                 Log.d("errore", error.message.toString())
+                this.response.value = Response(status = 404, data = null)
             }
         )
         queue.add(jsonRequest)
@@ -192,9 +204,12 @@ class PokemonDetailViewModel : ViewModel(){
 
                 this.locations.value = locations
 
+                this.response.value = Response(status = 200, data = null)
+
             },
             { error ->
                 Log.e("errore", error.message.toString())
+                this.response.value = Response(status = 404, data = null)
             }
         )
         queue.add(jsonRequest)

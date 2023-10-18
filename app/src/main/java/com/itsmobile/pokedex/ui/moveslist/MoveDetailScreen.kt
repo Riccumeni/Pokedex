@@ -1,6 +1,10 @@
 package com.itsmobile.pokedex.ui.moveslist
 
 import android.app.Activity
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -43,16 +47,17 @@ import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.itsmobile.pokedex.R
 import com.itsmobile.pokedex.ui.moveslist.ui.theme.Font
+import com.itsmobile.pokedex.ui.version.VersionActivity
 import com.itsmobile.pokedex.viewmodels.MoveDetailViewModel
 
 @Composable
-fun MoveDetailActivity (url: String, navHostController: NavHostController){
+fun MoveDetailActivity (url: String, navHostController: NavHostController, context: AppCompatActivity){
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = colorResource(id = R.color.background)
     ) {
         Column{
-            TopBar(navHostController)
+            TopBar(navHostController, context)
             if (url != null) {
                 Body(url)
             }
@@ -61,7 +66,8 @@ fun MoveDetailActivity (url: String, navHostController: NavHostController){
 }
 
 @Composable
-fun TopBar(navHostController: NavHostController) {
+fun TopBar(navHostController: NavHostController, context: AppCompatActivity) {
+    val sharedPref = context.getSharedPreferences("version", Context.MODE_PRIVATE)
     Box(modifier = Modifier
         .fillMaxWidth()
         .background(colorResource(id = R.color.primary))
@@ -78,8 +84,7 @@ fun TopBar(navHostController: NavHostController) {
 
 
                 if(navHostController.currentDestination?.id == navHostController.graph.startDestinationId){
-                    val activity = this as Activity
-                    activity.finish()
+                    context.finish()
                 }else{
                     navHostController.popBackStack()
                 }
@@ -87,6 +92,7 @@ fun TopBar(navHostController: NavHostController) {
             Box(modifier = Modifier.weight(weight = 1.0f)){
                 Text(text = "Pokédex", color = MaterialTheme.colorScheme.onPrimary, fontFamily = Font.poppinsFamily)
             }
+            /*
             Box (modifier =
             Modifier
                 .width(40.dp)
@@ -98,8 +104,8 @@ fun TopBar(navHostController: NavHostController) {
                 contentAlignment = Alignment.Center
 
             ){
-                Text("I", color = colorResource(id = R.color.onPrimaryContainer))
-            }
+                Text(sharedPref.getString("version_num", "I") ?: "I", color = colorResource(id = R.color.onPrimaryContainer))
+            }*/
         }
     }
 

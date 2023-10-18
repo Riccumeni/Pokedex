@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.itsmobile.pokedex.ui.adapters.MoveAdapter
 import com.itsmobile.pokedex.databinding.FragmentPokemonMovesBinding
+import com.itsmobile.pokedex.model.pokemon.Pokemon
 import com.itsmobile.pokedex.viewmodels.PokemonDetailViewModel
 
 class PokemonMovesFragment : Fragment() {
@@ -26,8 +27,9 @@ class PokemonMovesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        pokemonModel.pokemon.observe(viewLifecycleOwner){ pokemon ->
+        pokemonModel.response.observe(viewLifecycleOwner){ response ->
 
+            var pokemon = response.data as Pokemon
 
             binding.byLevelRecycler.apply {
                 adapter = MoveAdapter(pokemon.movesFilteredByLevel, "level-up")

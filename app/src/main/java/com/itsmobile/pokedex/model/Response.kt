@@ -1,6 +1,6 @@
 package com.itsmobile.pokedex.model
 
 data class Response (
-    val status: Int,
-    val data: Any?
+    var status: Int,
+    var data: Any?
 )

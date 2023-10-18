@@ -26,9 +26,9 @@ class PokemonEvolutionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        evolutionModel.evolution.observe(viewLifecycleOwner){ evolutions ->
+        evolutionModel.responseEvolution.observe(viewLifecycleOwner){ evolutions ->
             binding.evolutionRecycler.apply {
-                adapter = EvolutionAdapter(evolutions)
+                adapter = EvolutionAdapter(evolutions.data as ArrayList<Map<String, String>>)
                 layoutManager = LinearLayoutManager(requireView().context, LinearLayoutManager.VERTICAL, false)
             }
         }

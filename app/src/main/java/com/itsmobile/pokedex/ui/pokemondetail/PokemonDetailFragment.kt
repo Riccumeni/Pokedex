@@ -16,6 +16,7 @@ import com.itsmobile.pokedex.ui.adapters.TypeAdapter
 import com.itsmobile.pokedex.ui.adapters.StatAdapter
 import com.itsmobile.pokedex.databinding.FragmentPokemonDetailBinding
 import com.itsmobile.pokedex.model.Stat
+import com.itsmobile.pokedex.model.pokemon.Pokemon
 import com.itsmobile.pokedex.viewmodels.PokemonDetailViewModel
 import com.itsmobile.pokedex.model.pokemon.StatInside
 
@@ -34,7 +35,10 @@ class PokemonDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        pokemonModel.pokemon.observe(viewLifecycleOwner){ pokemon ->
+        pokemonModel.response.observe(viewLifecycleOwner){ response ->
+
+            var pokemon = response.data as Pokemon
+
             Glide.with(this).load(pokemon.sprites.front_default).into(binding.pokemonImageView)
             binding.pokemonName.text = pokemon.name.uppercase()
             binding.weight.text = pokemon.weight.toString()

@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.itsmobile.pokedex.ui.adapters.EvolutionAdapter
 import com.itsmobile.pokedex.databinding.FragmentPokemonEvolutionBinding
+import com.itsmobile.pokedex.model.evolution.PokemonEvolutionSuccess
 import com.itsmobile.pokedex.viewmodels.EvolutionViewModel
 import com.itsmobile.pokedex.viewmodels.PokemonDetailViewModel
 
@@ -28,7 +29,7 @@ class PokemonEvolutionFragment : Fragment() {
 
         evolutionModel.responseEvolution.observe(viewLifecycleOwner){ evolutions ->
             binding.evolutionRecycler.apply {
-                adapter = EvolutionAdapter(evolutions.data as ArrayList<Map<String, String>>)
+                adapter = EvolutionAdapter((evolutions as PokemonEvolutionSuccess).evolutions)
                 layoutManager = LinearLayoutManager(requireView().context, LinearLayoutManager.VERTICAL, false)
             }
         }

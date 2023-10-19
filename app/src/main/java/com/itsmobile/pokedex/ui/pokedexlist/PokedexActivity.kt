@@ -93,6 +93,9 @@ class PokedexActivity : AppCompatActivity() {
             }
         }
 
+        binding.retryButton.setOnClickListener {
+            viewModel.getPokemonListFilteredByGen(viewModel.version.value.toString(), this)
+        }
 
     }
 

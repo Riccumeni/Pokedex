@@ -17,6 +17,7 @@ import com.itsmobile.pokedex.ui.adapters.StatAdapter
 import com.itsmobile.pokedex.databinding.FragmentPokemonDetailBinding
 import com.itsmobile.pokedex.model.Stat
 import com.itsmobile.pokedex.model.pokemon.Pokemon
+import com.itsmobile.pokedex.model.pokemon.PokemonDetailSuccess
 import com.itsmobile.pokedex.viewmodels.PokemonDetailViewModel
 import com.itsmobile.pokedex.model.pokemon.StatInside
 
@@ -37,7 +38,7 @@ class PokemonDetailFragment : Fragment() {
 
         pokemonModel.response.observe(viewLifecycleOwner){ response ->
 
-            var pokemon = response.data as Pokemon
+            val pokemon = (response as PokemonDetailSuccess).pokemon
 
             Glide.with(this).load(pokemon.sprites.front_default).into(binding.pokemonImageView)
             binding.pokemonName.text = pokemon.name.uppercase()

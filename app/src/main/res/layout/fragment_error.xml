@@ -24,11 +24,25 @@
             android:src="@drawable/pikachu_sad" />
 
         <TextView
+            android:layout_marginVertical="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
             android:text="@string/network_error"
             android:textAlignment="center" />
+
+        <Button
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:id="@+id/retryButton"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/primaryContainer"
+            android:textColor="@color/onPrimaryContainer"
+            app:icon="@drawable/baseline_refresh_24"
+            app:iconTint="@color/onPrimaryContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Retry"
+            />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,8 +9,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.itsmobile.pokedex.ui.adapters.LocationAdapter
 import com.itsmobile.pokedex.databinding.FragmentPokemonLocationBinding
+import com.itsmobile.pokedex.model.location.PokemonLocationSuccess
 import com.itsmobile.pokedex.model.location.LocationsItem
-import com.itsmobile.pokedex.viewmodels.LocationViewModel
 import com.itsmobile.pokedex.viewmodels.PokemonDetailViewModel
 
 class PokemonLocationFragment : Fragment() {
@@ -28,13 +28,14 @@ class PokemonLocationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        locationModel.responseLocation.observe(viewLifecycleOwner){ locations ->
-            if((locations.data as ArrayList<LocationsItem>).size  == 0){
+        locationModel.responseLocation.observe(viewLifecycleOwner){ response ->
+            val locations = (response as PokemonLocationSuccess).locations
+            if(locations.size  == 0){
                 binding.isPokemonFindable.visibility = View.VISIBLE
                 binding.locations.visibility = View.GONE
             }else{
                 binding.locations.apply {
-                    adapter = LocationAdapter(locations.data as ArrayList<LocationsItem>)
+                    adapter = LocationAdapter(locations as ArrayList<LocationsItem>)
                     layoutManager = LinearLayoutManager(requireView().context, LinearLayoutManager.VERTICAL, false)
                 }
             }

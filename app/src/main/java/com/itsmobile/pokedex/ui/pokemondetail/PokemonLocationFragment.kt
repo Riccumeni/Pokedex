@@ -9,9 +9,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.itsmobile.pokedex.ui.adapters.LocationAdapter
 import com.itsmobile.pokedex.databinding.FragmentPokemonLocationBinding
-import com.itsmobile.pokedex.model.location.PokemonLocationSuccess
-import com.itsmobile.pokedex.model.location.LocationsItem
-import com.itsmobile.pokedex.viewmodels.PokemonDetailViewModel
+import com.itsmobile.pokedex.domain.usecases.PokemonLocationSuccess
+import com.itsmobile.pokedex.data.model.location.LocationsItem
+import com.itsmobile.pokedex.domain.viewmodels.PokemonDetailViewModel
 
 class PokemonLocationFragment : Fragment() {
 

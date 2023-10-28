@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.itsmobile.pokedex.R
-import com.itsmobile.pokedex.model.location.EncounterDetail
+import com.itsmobile.pokedex.data.model.location.EncounterDetail
 
-class EncounterAdapter (private val encounters: List<EncounterDetail>): RecyclerView.Adapter<EncounterAdapter.CustomViewHolder>() {
+class EncounterAdapter (private val encounters: List<com.itsmobile.pokedex.data.model.location.EncounterDetail>): RecyclerView.Adapter<EncounterAdapter.CustomViewHolder>() {
     class CustomViewHolder(val view: ViewGroup) : RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {

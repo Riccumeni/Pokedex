@@ -8,12 +8,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.activityViewModels
 import com.itsmobile.pokedex.R
-import com.itsmobile.pokedex.viewmodels.PokemonDetailViewModel
+import com.itsmobile.pokedex.domain.viewmodels.InternetConnectionViewModel
 
 class ErrorFragment : Fragment() {
 
-    private val pokemonModel : PokemonDetailViewModel by activityViewModels()
-
+    private val internetModel : InternetConnectionViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -28,10 +27,11 @@ class ErrorFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val retryButton = view.findViewById<Button>(R.id.retryButton)
 
         retryButton.setOnClickListener {
-
+            internetModel.isNetworkAvailable(view.context)
         }
     }
 

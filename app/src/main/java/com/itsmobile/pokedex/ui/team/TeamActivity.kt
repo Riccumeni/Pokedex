@@ -16,8 +16,8 @@ import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.itsmobile.pokedex.R
 import com.itsmobile.pokedex.databinding.ActivityTeamBinding
-import com.itsmobile.pokedex.model.pokemon.PokemonEntry
-import com.itsmobile.pokedex.model.pokemon.PokemonItem
+import com.itsmobile.pokedex.data.model.pokemon.PokemonEntry
+import com.itsmobile.pokedex.data.model.pokemon.PokemonItem
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.random.Random

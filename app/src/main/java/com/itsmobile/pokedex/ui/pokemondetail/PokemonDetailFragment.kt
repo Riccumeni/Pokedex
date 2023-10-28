@@ -15,11 +15,9 @@ import com.itsmobile.pokedex.ui.adapters.AbilityAdapter
 import com.itsmobile.pokedex.ui.adapters.TypeAdapter
 import com.itsmobile.pokedex.ui.adapters.StatAdapter
 import com.itsmobile.pokedex.databinding.FragmentPokemonDetailBinding
-import com.itsmobile.pokedex.model.Stat
-import com.itsmobile.pokedex.model.pokemon.Pokemon
-import com.itsmobile.pokedex.model.pokemon.PokemonDetailSuccess
-import com.itsmobile.pokedex.viewmodels.PokemonDetailViewModel
-import com.itsmobile.pokedex.model.pokemon.StatInside
+import com.itsmobile.pokedex.domain.usecases.PokemonDetailSuccess
+import com.itsmobile.pokedex.domain.viewmodels.PokemonDetailViewModel
+import com.itsmobile.pokedex.data.model.pokemon.StatInside
 
 class PokemonDetailFragment : Fragment() {
 
@@ -53,7 +51,7 @@ class PokemonDetailFragment : Fragment() {
                     tot += stat.base_stat
                 }
 
-                pokemon.stats.add(Stat(tot, StatInside("tot")))
+                pokemon.stats.add(com.itsmobile.pokedex.data.model.Stat(tot, StatInside("tot")))
             }
 
             val statRecycler = binding.statsRecycler

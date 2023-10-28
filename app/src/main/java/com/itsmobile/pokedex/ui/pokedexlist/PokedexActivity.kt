@@ -17,7 +17,7 @@ import com.itsmobile.pokedex.R
 import com.itsmobile.pokedex.common.VersionHelper
 import com.itsmobile.pokedex.ui.version.VersionActivity
 import com.itsmobile.pokedex.databinding.ActivityPokedexBinding
-import com.itsmobile.pokedex.viewmodels.PokedexViewModel
+import com.itsmobile.pokedex.domain.viewmodels.PokedexViewModel
 
 class PokedexActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPokedexBinding

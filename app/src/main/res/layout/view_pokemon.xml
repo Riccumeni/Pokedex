@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <View
-        android:id="@+id/view3"
+        android:id="@+id/pokedexCard"
         android:layout_width="0dp"
         android:layout_height="106dp"
         android:layout_marginStart="5dp"
@@ -44,7 +44,7 @@
         app:layout_constraintTop_toTopOf="@+id/pokeball" />
 
     <View
-        android:id="@+id/view4"
+        android:id="@+id/teamCard"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="30dp"
@@ -62,10 +62,10 @@
         android:textAllCaps="true"
         android:fontFamily= "@font/poppins_semibold"
         android:textColor="@color/onPrimaryContainer"
-        app:layout_constraintBottom_toBottomOf="@+id/view4"
-        app:layout_constraintEnd_toEndOf="@+id/view4"
-        app:layout_constraintStart_toStartOf="@+id/view4"
-        app:layout_constraintTop_toTopOf="@+id/view4" />
+        app:layout_constraintBottom_toBottomOf="@+id/teamCard"
+        app:layout_constraintEnd_toEndOf="@+id/teamCard"
+        app:layout_constraintStart_toStartOf="@+id/teamCard"
+        app:layout_constraintTop_toTopOf="@+id/teamCard" />
     <ImageView
         android:id="@+id/image"
         android:layout_width="85dp"

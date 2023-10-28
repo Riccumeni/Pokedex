@@ -31,44 +31,14 @@
         android:layout_weight="1"
         android:name="com.itsmobile.pokedex.ui.LoadingFragment"
         tools:layout="@layout/fragment_loading" />
-    <LinearLayout
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:padding="20dp"
-        android:background="@color/primary">
-        <ImageView
-            android:id="@+id/info"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/baseline_info_24"
-            android:layout_weight="1"
-            />
-        <ImageView
-            android:id="@+id/evolution"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/evolution"
-            android:layout_weight="1"
-            android:alpha="0.7"
-            />
-        <ImageView
-            android:id="@+id/location"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/baseline_location_on_24"
-            android:layout_weight="1"
-            android:alpha="0.7"
-        />
-        <ImageView
-            android:id="@+id/moves"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/moves"
-            android:layout_weight="1"
-            android:alpha="0.7"
-            />
-    </LinearLayout>
+        app:itemTextColor="@color/onPrimary"
+        android:background="@color/primary"
+        app:itemIconTint="@drawable/bottom_nav_color"
+        app:menu="@menu/bottom_nav_menu"
+        android:layout_height="wrap_content">
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </LinearLayout>

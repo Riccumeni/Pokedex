@@ -29,12 +29,12 @@ class MainActivity : AppCompatActivity() {
             overridePendingTransition(R.anim.slide_in_right, R.anim.fade_out_anim)
         }
 
-        binding.view3.setOnClickListener {
+        binding.pokedexCard.setOnClickListener {
             startActivity(Intent(this, PokedexActivity::class.java))
             overridePendingTransition(R.anim.slide_in_right, R.anim.fade_out_anim)
         }
 
-        binding.view4.setOnClickListener {
+        binding.teamCard.setOnClickListener {
             val intent = Intent(this, TeamActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.slide_in_right, R.anim.fade_out_anim)

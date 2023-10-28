@@ -8,9 +8,9 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.itsmobile.pokedex.R
-import com.itsmobile.pokedex.model.Stat
+import com.itsmobile.pokedex.data.model.Stat
 
-class StatAdapter(private val stats: ArrayList<Stat>) : RecyclerView.Adapter<StatAdapter.CustomViewHolder>() {
+class StatAdapter(private val stats: ArrayList<com.itsmobile.pokedex.data.model.Stat>) : RecyclerView.Adapter<StatAdapter.CustomViewHolder>() {
     class CustomViewHolder(val view: ViewGroup) : RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {

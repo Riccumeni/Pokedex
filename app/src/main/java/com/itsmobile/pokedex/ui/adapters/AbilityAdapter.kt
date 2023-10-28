@@ -10,12 +10,12 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.itsmobile.pokedex.R
-import com.itsmobile.pokedex.model.Ability
-import com.itsmobile.pokedex.model.ability.EffectEntries
+import com.itsmobile.pokedex.data.model.Ability
+import com.itsmobile.pokedex.data.model.ability.EffectEntries
 import java.util.*
 import kotlin.collections.ArrayList
 
-class AbilityAdapter (private var abilities: ArrayList<Ability>): RecyclerView.Adapter<TypeAdapter.CustomViewHolder>() {
+class AbilityAdapter (private var abilities: ArrayList<com.itsmobile.pokedex.data.model.Ability>): RecyclerView.Adapter<TypeAdapter.CustomViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TypeAdapter.CustomViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.view_ability, parent, false) as ViewGroup

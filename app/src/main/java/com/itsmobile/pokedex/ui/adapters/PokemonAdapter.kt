@@ -11,7 +11,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.itsmobile.pokedex.R
-import com.itsmobile.pokedex.model.pokemon.PokemonEntry
+import com.itsmobile.pokedex.data.model.pokemon.PokemonEntry
 import com.itsmobile.pokedex.ui.pokemondetail.PokemonDetailActivity
 
 class PokemonAdapter (private val pokemonEntries: ArrayList<PokemonEntry>) : RecyclerView.Adapter<PokemonAdapter.CustomViewHolder>() {

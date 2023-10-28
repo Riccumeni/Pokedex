@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.itsmobile.pokedex.R
-import com.itsmobile.pokedex.model.pokemon.TypeOutside
+import com.itsmobile.pokedex.data.model.pokemon.TypeOutside
 
 class TypeAdapter(private var types: ArrayList<TypeOutside>): RecyclerView.Adapter<TypeAdapter.CustomViewHolder>() {
     class CustomViewHolder(val view: ViewGroup) : RecyclerView.ViewHolder(view)

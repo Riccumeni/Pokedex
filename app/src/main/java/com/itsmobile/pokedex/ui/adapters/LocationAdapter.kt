@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.itsmobile.pokedex.R
-import com.itsmobile.pokedex.model.location.LocationsItem
+import com.itsmobile.pokedex.data.model.location.LocationsItem
 import kotlin.collections.ArrayList
 
 class LocationAdapter(private val locations: ArrayList<LocationsItem>): RecyclerView.Adapter<LocationAdapter.CustomViewHolder>() {

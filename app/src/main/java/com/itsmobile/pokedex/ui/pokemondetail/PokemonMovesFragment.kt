@@ -10,9 +10,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.itsmobile.pokedex.ui.adapters.MoveAdapter
 import com.itsmobile.pokedex.databinding.FragmentPokemonMovesBinding
-import com.itsmobile.pokedex.model.pokemon.Pokemon
-import com.itsmobile.pokedex.model.pokemon.PokemonDetailSuccess
-import com.itsmobile.pokedex.viewmodels.PokemonDetailViewModel
+import com.itsmobile.pokedex.domain.usecases.PokemonDetailSuccess
+import com.itsmobile.pokedex.domain.viewmodels.PokemonDetailViewModel
 
 class PokemonMovesFragment : Fragment() {
     private var _binding: FragmentPokemonMovesBinding? = null

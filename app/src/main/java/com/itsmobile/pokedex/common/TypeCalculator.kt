@@ -1,7 +1,7 @@
 package com.itsmobile.pokedex.common
 
-import com.itsmobile.pokedex.model.Type
-import com.itsmobile.pokedex.model.pokemon.TypeOutside
+import com.itsmobile.pokedex.data.model.Type
+import com.itsmobile.pokedex.data.model.pokemon.TypeOutside
 
 abstract class TypeCalculator {
     companion object{
@@ -230,13 +230,13 @@ abstract class TypeCalculator {
             val newWeaknesses = ArrayList<TypeOutside>()
 
             weaknesses.forEach { weak ->
-                newWeaknesses.add(TypeOutside(Type(weak.name)))
+                newWeaknesses.add(TypeOutside(com.itsmobile.pokedex.data.model.Type(weak.name)))
             }
 
             val newResistances = ArrayList<TypeOutside>()
 
             resistances.forEach { resistance ->
-                newResistances.add(TypeOutside(Type(resistance.name)))
+                newResistances.add(TypeOutside(com.itsmobile.pokedex.data.model.Type(resistance.name)))
             }
 
             return Pair(newWeaknesses, newResistances)
@@ -247,11 +247,11 @@ abstract class TypeCalculator {
             val weaknesses = ArrayList<TypeOutside>()
 
             typeResistances[PokemonType.valueOf(type.uppercase())]?.forEach {
-                resistances.add(TypeOutside(Type(it.name)))
+                resistances.add(TypeOutside(com.itsmobile.pokedex.data.model.Type(it.name)))
             }
 
             typeWeakness[PokemonType.valueOf(type.uppercase())]?.forEach {
-                weaknesses.add(TypeOutside(Type(it.name)))
+                weaknesses.add(TypeOutside(com.itsmobile.pokedex.data.model.Type(it.name)))
             }
 
             return Pair(weaknesses, resistances)

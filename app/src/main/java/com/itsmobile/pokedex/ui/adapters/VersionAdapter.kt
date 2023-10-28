@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.itsmobile.pokedex.R
-import com.itsmobile.pokedex.model.Version
+import com.itsmobile.pokedex.data.model.Version
 
-class VersionAdapter (private val versions: ArrayList<Version>) : RecyclerView.Adapter<VersionAdapter.CustomViewHolder>() {
+class VersionAdapter (private val versions: ArrayList<com.itsmobile.pokedex.data.model.Version>) : RecyclerView.Adapter<VersionAdapter.CustomViewHolder>() {
 
     class CustomViewHolder(val view: ViewGroup) : RecyclerView.ViewHolder(view)
 

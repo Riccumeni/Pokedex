@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.itsmobile.pokedex.R
 import com.itsmobile.pokedex.common.VersionHelper
 import com.itsmobile.pokedex.databinding.ActivityVersionBinding
-import com.itsmobile.pokedex.model.Version
+import com.itsmobile.pokedex.data.model.Version
 import com.itsmobile.pokedex.ui.adapters.VersionAdapter
 
 class VersionActivity : AppCompatActivity() {

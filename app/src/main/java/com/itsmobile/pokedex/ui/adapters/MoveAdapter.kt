@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.itsmobile.pokedex.R
-import com.itsmobile.pokedex.model.pokemon.MoveVersion
+import com.itsmobile.pokedex.data.model.pokemon.MoveVersion
 import kotlin.collections.ArrayList
 
 class MoveAdapter (private val moves: ArrayList<MoveVersion>, private val howObtain: String) : RecyclerView.Adapter<MoveAdapter.CustomViewHolder>() {

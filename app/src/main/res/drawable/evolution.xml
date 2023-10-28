@@ -10,7 +10,7 @@
     <path
         android:strokeColor="#FFFFFFFF"
         android:strokeWidth="2"
-        android:pathData="M14.5 6A11.5 11.5 0 1 0 14.5 29 11.5 11.5 0 1 0 14.5 6z"/>
+        android:pathData="M15 6A11.5 11.5 0 1 0 14.5 29 11.5 11.5 0 1 0 14.5 6z"/>
     <path
         android:strokeColor="#FFFFFFFF"
         android:strokeWidth="2"

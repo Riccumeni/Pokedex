@@ -6,7 +6,7 @@ import android.net.NetworkInfo
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class InternetConnectionViewModel(): ViewModel() {
+class InternetConnectionViewModel: ViewModel() {
 
     var isConnected = MutableLiveData<Boolean>()
 

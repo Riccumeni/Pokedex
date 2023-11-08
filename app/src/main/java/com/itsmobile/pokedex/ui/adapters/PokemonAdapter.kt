@@ -2,11 +2,14 @@ package com.itsmobile.pokedex.ui.adapters
 
 import android.content.Intent
 import android.os.Bundle
+import android.transition.TransitionInflater
+import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -33,6 +36,7 @@ class PokemonAdapter (private val pokemonEntries: ArrayList<PokemonEntry>) : Rec
             val intent  = Intent (holder.view.context, PokemonDetailActivity::class.java)
             intent.putExtra("url",poke.pokemon_species.url)
             startActivity(holder.view.context, intent, Bundle())
+            (holder.view.context as AppCompatActivity).overridePendingTransition(R.anim.slide_in_right, R.anim.fade_out_anim)
         }
     }
 

@@ -2,6 +2,8 @@ package com.itsmobile.pokedex.ui.pokemondetail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.transition.TransitionInflater
+import android.transition.TransitionManager
 import androidx.activity.viewModels
 import com.itsmobile.pokedex.R
 import com.itsmobile.pokedex.domain.viewmodels.InternetConnectionViewModel
@@ -39,6 +41,8 @@ class PokemonDetailActivity : AppCompatActivity() {
         binding.backButton.setOnClickListener {
             finish()
         }
+
+        // ASSIGN A FIRST FRAGMENT
 
         internetModel.isNetworkAvailable(this)
 
@@ -79,6 +83,8 @@ class PokemonDetailActivity : AppCompatActivity() {
                     .commit()
             }
         }
+
+        // BOTTOM NAVIGATION LOGIC
 
         binding.bottomNavigation.setOnItemSelectedListener { menuItem ->
             internetModel.isNetworkAvailable(this)

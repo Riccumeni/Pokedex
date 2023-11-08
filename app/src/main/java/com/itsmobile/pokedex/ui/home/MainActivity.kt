@@ -1,9 +1,12 @@
 package com.itsmobile.pokedex.ui.home
 
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.transition.Transition
+import android.transition.TransitionInflater
 import com.itsmobile.pokedex.ui.pokedexlist.PokedexActivity
 import com.itsmobile.pokedex.R
 import com.itsmobile.pokedex.ui.team.TeamActivity

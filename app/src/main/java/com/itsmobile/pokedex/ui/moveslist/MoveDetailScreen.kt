@@ -47,6 +47,7 @@ import coil.compose.AsyncImage
 import com.itsmobile.pokedex.R
 import com.itsmobile.pokedex.domain.usecases.MoveDetailSuccess
 import com.itsmobile.pokedex.domain.usecases.MoveError
+import com.itsmobile.pokedex.domain.usecases.MoveInitial
 import com.itsmobile.pokedex.domain.usecases.MoveLoading
 import com.itsmobile.pokedex.ui.moveslist.ui.theme.Font
 import com.itsmobile.pokedex.domain.viewmodels.MoveDetailViewModel
@@ -98,11 +99,13 @@ fun TopBar(navHostController: NavHostController, context: AppCompatActivity) {
 @Composable
 fun Body(url: String, dataViewModel: MoveDetailViewModel = viewModel()){
     val mContext = LocalContext.current
-    dataViewModel.setMove(mContext, url)
 
-    val state = dataViewModel.state
+    var state = dataViewModel.state
 
     when(state){
+        is MoveInitial -> {
+            dataViewModel.setMove(mContext, url)
+        }
         is MoveDetailSuccess -> {
             val move = state.move
 
@@ -115,104 +118,106 @@ fun Body(url: String, dataViewModel: MoveDetailViewModel = viewModel()){
                 Stat(propertyName = "TARGET", propertyDescription = move.target.name.uppercase())
                 Stat(propertyName = "TYPE", propertyDescription = move.type.name.uppercase())
 
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text("POWER", fontFamily = Font.poppinsFamily, fontWeight = FontWeight.Medium)
-                    Text(move.power.toString(), fontFamily = Font.poppinsFamily)
-                    Row (verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween){
-                        Column(modifier = Modifier.width(80.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text("PRIORITY", fontFamily = Font.poppinsFamily, fontWeight = FontWeight.Medium)
-                            Text(move.priority.toString(), fontFamily = Font.poppinsFamily)
-                        }
-                        Box {
-                            Spacer(
-                                modifier = Modifier
-                                    .drawWithCache {
-                                        val path = Path()
+                if(move.damage_class.name.uppercase() != "STATUS"){
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text("POWER", fontFamily = Font.poppinsFamily, fontWeight = FontWeight.Medium)
+                        Text(move.power.toString(), fontFamily = Font.poppinsFamily)
+                        Row (verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween){
+                            Column(modifier = Modifier.width(80.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                                Text("PRIORITY", fontFamily = Font.poppinsFamily, fontWeight = FontWeight.Medium)
+                                Text(move.priority.toString(), fontFamily = Font.poppinsFamily)
+                            }
+                            Box {
+                                Spacer(
+                                    modifier = Modifier
+                                        .drawWithCache {
+                                            val path = Path()
 
-                                        path.moveTo(
-                                            size.width / 2f,
-                                            0f
-                                        )
-                                        path.lineTo(
-                                            size.width,
-                                            size.height / 2f
-                                        )
-                                        path.lineTo(
-                                            size.width / 2f,
-                                            size.height
-                                        )
-                                        path.lineTo(
-                                            0f, size.height / 2f
-                                        )
-                                        path.close()
-                                        onDrawBehind {
-                                            drawPath(path, Color(0x80FEDEA6), style = Fill)
+                                            path.moveTo(
+                                                size.width / 2f,
+                                                0f
+                                            )
+                                            path.lineTo(
+                                                size.width,
+                                                size.height / 2f
+                                            )
+                                            path.lineTo(
+                                                size.width / 2f,
+                                                size.height
+                                            )
+                                            path.lineTo(
+                                                0f, size.height / 2f
+                                            )
+                                            path.close()
+                                            onDrawBehind {
+                                                drawPath(path, Color(0x80FEDEA6), style = Fill)
+                                            }
                                         }
-                                    }
-                                    .width(200.dp)
-                                    .height(200.dp)
-                                    .zIndex(0f)
-                            )
-                            Spacer(
-                                modifier = Modifier
-                                    .drawWithCache {
-                                        val path = Path()
+                                        .width(200.dp)
+                                        .height(200.dp)
+                                        .zIndex(0f)
+                                )
+                                Spacer(
+                                    modifier = Modifier
+                                        .drawWithCache {
+                                            val path = Path()
 
-                                        path.moveTo(
-                                            size.width / 2f,
-                                            getPosition(
-                                                10.0,
-                                                250.0,
-                                                move.power.toDouble(),
-                                                0.0,
-                                                size.height / 2.toDouble()
-                                            ).toFloat()
-                                        )
-                                        path.lineTo(
-                                            getPosition(
-                                                1.0,
-                                                35.0,
-                                                move.pp.toDouble(),
-                                                size.width / 2.toDouble(),
-                                                size.width.toDouble()
-                                            ).toFloat(), size.height / 2f
-                                        )
-                                        path.lineTo(
-                                            size.width / 2f,
-                                            getPosition(
-                                                30.0,
-                                                100.0,
-                                                move.accuracy.toDouble(),
-                                                size.height / 2.toDouble(),
-                                                size.height.toDouble()
-                                            ).toFloat()
-                                        )
-                                        path.lineTo(
-                                            getPosition(
-                                                0.0,
-                                                1.0,
-                                                move.priority.toDouble(),
-                                                size.width / 2.toDouble(),
-                                                0.0
-                                            ).toFloat(), size.height / 2f
-                                        )
-                                        path.close()
-                                        onDrawBehind {
-                                            drawPath(path, Color(0xFFFFD283), style = Fill)
+                                            path.moveTo(
+                                                size.width / 2f,
+                                                getPosition(
+                                                    10.0,
+                                                    250.0,
+                                                    move.power.toDouble(),
+                                                    size.height / 2.toDouble(),
+                                                    0.0
+                                                ).toFloat()
+                                            )
+                                            path.lineTo(
+                                                getPosition(
+                                                    1.0,
+                                                    35.0,
+                                                    move.pp.toDouble(),
+                                                    size.width / 2.toDouble(),
+                                                    size.width.toDouble()
+                                                ).toFloat(), size.height / 2f
+                                            )
+                                            path.lineTo(
+                                                size.width / 2f,
+                                                getPosition(
+                                                    30.0,
+                                                    100.0,
+                                                    move.accuracy.toDouble(),
+                                                    size.height / 2.toDouble(),
+                                                    size.height.toDouble()
+                                                ).toFloat()
+                                            )
+                                            path.lineTo(
+                                                getPosition(
+                                                    0.0,
+                                                    1.0,
+                                                    move.priority.toDouble(),
+                                                    size.width / 2.toDouble(),
+                                                    0.0
+                                                ).toFloat(), size.height / 2f
+                                            )
+                                            path.close()
+                                            onDrawBehind {
+                                                drawPath(path, Color(0xFFFFD283), style = Fill)
+                                            }
                                         }
-                                    }
-                                    .width(200.dp)
-                                    .height(200.dp)
-                                    .zIndex(1f)
-                            )
+                                        .width(200.dp)
+                                        .height(200.dp)
+                                        .zIndex(1f)
+                                )
+                            }
+                            Column(modifier = Modifier.width(80.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                                Text("PP", fontFamily = Font.poppinsFamily, fontWeight = FontWeight.Medium)
+                                Text(move.pp.toString(), fontFamily = Font.poppinsFamily)
+                            }
                         }
-                        Column(modifier = Modifier.width(80.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text("PP", fontFamily = Font.poppinsFamily, fontWeight = FontWeight.Medium)
-                            Text(move.pp.toString(), fontFamily = Font.poppinsFamily)
-                        }
+                        Text("ACCURACY", fontFamily = Font.poppinsFamily, fontWeight = FontWeight.Medium)
+                        Text(move.accuracy.toString(), fontFamily = Font.poppinsFamily)
                     }
-                    Text("ACCURACY", fontFamily = Font.poppinsFamily, fontWeight = FontWeight.Medium)
-                    Text(move.accuracy.toString(), fontFamily = Font.poppinsFamily)
                 }
 
                 Text("Pokemon that can learn it".uppercase(), fontSize = 18.sp, modifier = Modifier.padding(vertical = 30.dp, horizontal = 10.dp), fontFamily = Font.poppinsFamily, fontWeight = FontWeight.SemiBold)
@@ -254,7 +259,7 @@ fun Body(url: String, dataViewModel: MoveDetailViewModel = viewModel()){
                         .height(150.dp)
                         .width(150.dp))
                     Text(text = "Unable to fetch data, check your internet connection", color = colorResource(id = R.color.onBackground), fontFamily = Font.poppinsFamily, textAlign = TextAlign.Center)
-                    ElevatedButton(onClick = {  }, colors = ButtonDefaults.buttonColors(
+                    ElevatedButton(onClick = { dataViewModel.setMove(mContext, url) }, colors = ButtonDefaults.buttonColors(
                         containerColor = colorResource(id = R.color.primaryContainer)
                     )) {
                         Icon(painter = painterResource(id = R.drawable.baseline_refresh_24), contentDescription = "", modifier = Modifier

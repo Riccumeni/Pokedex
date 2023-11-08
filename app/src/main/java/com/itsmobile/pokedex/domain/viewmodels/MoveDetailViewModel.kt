@@ -20,6 +20,10 @@ class MoveDetailViewModel: ViewModel() {
     var state: MoveState by mutableStateOf(MoveLoading())
         private set
 
+    init {
+        state = MoveInitial()
+    }
+
 
     fun setMove(context: Context, url:String){
 

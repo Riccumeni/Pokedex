@@ -2,46 +2,52 @@ package com.itsmobile.pokedex.common
 
 import com.itsmobile.pokedex.data.model.Version
 
+/**
+ * VersionHelper
+ * This class help the conversion of the version in different type of char
+ */
+
 class VersionHelper {
     companion object {
 
-        val versions = arrayListOf<com.itsmobile.pokedex.data.model.Version>(
-            com.itsmobile.pokedex.data.model.Version(
+        val versions = arrayListOf(
+            Version(
                 "RED, BLUE",
                 "I",
                 "https://pokeapi.co/api/v2/pokedex/2"
             ),
-            com.itsmobile.pokedex.data.model.Version(
+            Version(
                 "GOLD, SILVER",
                 "II",
                 "https://pokeapi.co/api/v2/pokedex/3"
             ),
-            com.itsmobile.pokedex.data.model.Version(
+            Version(
                 "RUBY, SAPPHIRE",
                 "III",
                 "https://pokeapi.co/api/v2/pokedex/4"
             ),
-            com.itsmobile.pokedex.data.model.Version(
+            Version(
                 "DIAMOND, PEARL",
                 "IV",
                 "https://pokeapi.co/api/v2/pokedex/5"
             ),
-            com.itsmobile.pokedex.data.model.Version(
+            Version(
                 "WHITE, BLACK",
                 "V",
                 "https://pokeapi.co/api/v2/pokedex/8"
             ),
-            com.itsmobile.pokedex.data.model.Version(
+            Version(
                 "X, Y",
                 "VI",
                 "https://pokeapi.co/api/v2/pokedex/12"
             ),
-            com.itsmobile.pokedex.data.model.Version(
+            Version(
                 "SUN, MOON",
                 "VII",
                 "https://pokeapi.co/api/v2/pokedex/16"
             )
         )
+
         fun getRomanVersionByUrl(url: String) : String{
             var numberVersion = ""
 

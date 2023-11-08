@@ -3,6 +3,11 @@ package com.itsmobile.pokedex.common
 import com.itsmobile.pokedex.data.model.Type
 import com.itsmobile.pokedex.data.model.pokemon.TypeOutside
 
+/**
+ * TypeCalculator
+ * This class is useful to calculate type weakness and resistance
+ */
+
 abstract class TypeCalculator {
     companion object{
         enum class PokemonType {
@@ -153,6 +158,13 @@ abstract class TypeCalculator {
             )
         )
 
+        /**
+         * Calculate type Resistance and Weakness
+         * @param type: is the first type of pokemon
+         * @param type2: is the second type of pokemon
+         * @return a Pair with ArrayList of [Weakness and resistances]
+         */
+
         fun calculateWeaknessesAndResistances(type: String, type2: String): Pair<ArrayList<TypeOutside>, ArrayList<TypeOutside>> {
             val weaknesses = mutableListOf<PokemonType>()
             val resistances = mutableListOf<PokemonType>()
@@ -241,6 +253,12 @@ abstract class TypeCalculator {
 
             return Pair(newWeaknesses, newResistances)
         }
+
+        /**
+         * Convert String to Type
+         * @param type the type of pokemon
+         * @return a Pair of weakness and resistances
+         */
 
         fun convertPokemonTypeToTypeOutside(type: String) : Pair<ArrayList<TypeOutside>, ArrayList<TypeOutside>>{
             val resistances = ArrayList<TypeOutside>()

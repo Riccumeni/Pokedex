@@ -1,14 +1,17 @@
 package com.itsmobile.pokedex.ui.adapters
 
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.ScaleAnimation
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.itsmobile.pokedex.R
-import com.itsmobile.pokedex.data.model.Stat
+
 
 class StatAdapter(private val stats: ArrayList<com.itsmobile.pokedex.data.model.Stat>) : RecyclerView.Adapter<StatAdapter.CustomViewHolder>() {
     class CustomViewHolder(val view: ViewGroup) : RecyclerView.ViewHolder(view)
@@ -18,7 +21,7 @@ class StatAdapter(private val stats: ArrayList<com.itsmobile.pokedex.data.model.
         return CustomViewHolder(view)
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "ObjectAnimatorBinding")
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
 
         val stat = stats[position]
@@ -42,10 +45,13 @@ class StatAdapter(private val stats: ArrayList<com.itsmobile.pokedex.data.model.
             maxStat = 700
         }
 
-        val widthBarOutside = holder.view.findViewById<ConstraintLayout>(R.id.barOutside).layoutParams.width
-        val widthBarInside = ((stat.base_stat / maxStat) * widthBarOutside).toInt() * 3
-        holder.view.findViewById<View>(R.id.barInside).layoutParams.width = widthBarInside
+        val progressBar: ProgressBar = holder.view.findViewById(R.id.barInside)
 
+        progressBar.max = maxStat
+
+        ObjectAnimator.ofInt(holder.view.findViewById<ProgressBar>(R.id.barInside), "progress", stat.base_stat.toInt())
+            .setDuration(2000)
+            .start()
     }
 
     override fun getItemCount() = stats.size

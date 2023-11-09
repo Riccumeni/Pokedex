@@ -125,6 +125,9 @@ class TeamActivity : AppCompatActivity() {
                     val rand = Random.nextInt(0, numbers.size)
                     Glide.with(this@TeamActivity).load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${numbers[rand]}.png").centerInside().into(viewList[i])
                     viewList[i].visibility = View.VISIBLE
+                    val imageAnim = AnimationUtils.loadAnimation(this, R.anim.scale_anim)
+
+                    viewList[i].startAnimation(imageAnim)
                     i++
                 }
 

@@ -27,22 +27,17 @@
         android:fontFamily="@font/poppins_regular"
         android:layout_weight="25"
         />
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/barOutside"
+    <ProgressBar
+        android:id="@+id/barInside"
+        style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="50dp"
         android:layout_height="16dp"
-        android:background="@drawable/bar_outside"
         android:layout_gravity="center"
-        android:layout_weight="50">
+        android:layout_weight="50"
+        android:progressDrawable="@drawable/custom_progress_bg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
-        <View
-            android:id="@+id/barInside"
-            android:layout_width="33dp"
-            android:layout_height="16dp"
-            android:background="@drawable/bar_inside"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

@@ -95,7 +95,7 @@
         android:layout_height="175dp"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="40dp"
-        android:background="@drawable/team"
+        android:background="@drawable/movecard"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/teamCard">
 

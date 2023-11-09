@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -39,6 +40,10 @@ class PokemonDetailFragment : Fragment() {
             val pokemon = (response as PokemonDetailSuccess).pokemon
 
             Glide.with(this).load(pokemon.sprites.front_default).into(binding.pokemonImageView)
+            val imageAnim = AnimationUtils.loadAnimation(view.context, R.anim.scale_anim)
+
+            binding.pokemonImageView.startAnimation(imageAnim)
+
             binding.pokemonName.text = pokemon.name.uppercase()
             binding.weight.text = pokemon.weight.toString()
             binding.height.text = pokemon.height.toString()

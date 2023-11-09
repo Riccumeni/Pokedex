@@ -26,6 +26,7 @@ class EvolutionAdapter (private val evolutions: ArrayList<Map<String, String>>) 
             val postEvo = holder.view.findViewById<ImageView>(R.id.postEvolution)
             Glide.with(holder.view.context).load(evolution["url"]).into(preEvo)
             Glide.with(holder.view.context).load(evolutions[position + 1]["url"]).into(postEvo)
+
         }
     }
 
